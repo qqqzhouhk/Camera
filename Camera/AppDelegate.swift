@@ -7,15 +7,46 @@
 //
 
 import UIKit
+//import FirebaseDatabase
+//import FirebaseAuth
+import Firebase
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
+     var window:UIWindow?
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+         FIRApp.configure()
+        
+        _ = self.window!.rootViewController
+
+        
+        let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedin")
+        let isUserLoggedIn:Bool = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedin")
+        
+        if(!isUserLoggedIn)
+        {
+            let loginViewController = mainStoryboard.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
+            
+            window!.rootViewController = loginViewController
+            window!.makeKeyAndVisible()
+        }
+        else
+        {
+            let protectedPage = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+            
+            window!.rootViewController = protectedPage
+            window!.makeKeyAndVisible()
+         }
+
+       
         return true
     }
 
