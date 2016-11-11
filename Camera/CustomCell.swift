@@ -10,6 +10,11 @@ import UIKit
 
 class CustomCell: UITableViewCell {
 
+    @IBOutlet weak var NameTextField: UITextField!
+    @IBOutlet weak var TelephoneTextField: UITextField!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

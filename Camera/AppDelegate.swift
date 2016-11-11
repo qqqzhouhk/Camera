@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          FIRApp.configure()
         
         _ = self.window!.rootViewController
-
+        
         
         let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedin")

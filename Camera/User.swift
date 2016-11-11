@@ -44,4 +44,8 @@ struct User {
             name = ""
         }
     }
+    
+    func toAnyObject() -> AnyObject {
+        return ["telephone":telephone, "name":name]
+    }
 }

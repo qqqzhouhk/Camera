@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class addUserViewController: UIViewController {
 
+    var dbRef:FIRDatabaseReference!
     
-   
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var telephoneTextField: UITextField!
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        dbRef = FIRDatabase.database().reference().child("users")
 
     }
 
@@ -28,6 +30,16 @@ class addUserViewController: UIViewController {
     }
     
 
+    @IBAction func addPatients(sender: AnyObject) {
+        let telephone = self.telephoneTextField.text
+        let name = self.nameTextField.text
+        let user = User(telephone: telephone!, name: name!)
+        
+        let userRef = self.dbRef.child(self.nameTextField.text!.lowercaseString)
+        
+        userRef.setValue(user.toAnyObject())
+        
+    }
 
 
 }

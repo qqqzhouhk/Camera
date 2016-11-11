@@ -8,28 +8,83 @@
 
 import UIKit
 import FirebaseAuth
-import Firebase
+import FirebaseDatabase
 
-
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    var dbRef:FIRDatabaseReference!
-    
-
-    @IBOutlet weak var tableView: UITableView!
-    
-    @IBAction func addUser(sender: AnyObject) {
-        
-    
-       
+extension ViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
     }
+}
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+
+// MARK: - Properties
+    var dbRef:FIRDatabaseReference!
+    var users = [User]()
+    var filteredUsers = [User]()
+    var searchController: UISearchController!
+    var resultsController = UITableViewController()
     
+    @IBOutlet weak var tableView: UITableView!
+
+/*
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        //filter through the patients
+        
+        self.filteredUsers = self.users.filter { (user:String) -> Bool in
+          return true
+        }
+        //update the results tableview
+        self.resultsController.tableView.reloadData()
+    }
+*/
+    
+    func filterContentForSearchText(searchText:String, scope:String = "All"){
+        filteredUsers = users.filter { username in
+            return username.name.lowercaseString.containsString(searchText.lowercaseString)
+            //return username.telephone.lowercaseString.containsString(searchText.lowercaseString)
+    }
+        self.resultsController.tableView.reloadData()
+        //tableView.reloadData()
+    }
+
+
+// MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
- 
         dbRef = FIRDatabase.database().reference().child("users")
+        startObservingDB()
         
+        //search bar
+        self.resultsController.tableView.dataSource = self
+        self.resultsController.tableView.delegate = self
+        self.searchController = UISearchController(searchResultsController: self.resultsController)
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        searchController.searchResultsUpdater = self
     }
+
+
+
+    func startObservingDB (){
+        dbRef.observeEventType(.Value, withBlock: {(snapshot:FIRDataSnapshot) in
+            var newusers = [User]()
+            
+            for users in snapshot.children{
+                let userObject = User(snapshot: users as! FIRDataSnapshot)
+                newusers.append(userObject)
+            }
+            
+            self.users = newusers
+            self.tableView.reloadData()
+            
+        })  {(error:NSError) in
+            print(error.description)
+        }
+    }
+    
+    
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,6 +101,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          self.performSegueWithIdentifier("SigninToProtectedPage", sender: self)
         }
     }
+
+    
+    
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {
         
@@ -65,18 +123,48 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         AppDelegate.window?.rootViewController = loginViewController
         
         AppDelegate.window?.makeKeyAndVisible()
- */
+        */
         
     }
 
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if searchController.active && searchController.searchBar.text != ""{
+            return filteredUsers.count
+        }
+
+        return users.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
+        
+        let username: User
+        if searchController.active && searchController.searchBar.text != ""{
+            username = filteredUsers[indexPath.row]
+        } else{
+            username = users[indexPath.row]
+        }
+        
+        
+        
+        
+        //self.NameTextField.text = user.name
+        //self.TelephoneTextField.text = user.telephone
+        
+        cell.NameTextField.text=username.name
+        cell.TelephoneTextField.text=username.telephone
+        
+        
         return cell
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete{
+            let user = users[indexPath.row]
+            
+            user.itemRef?.removeValue()
+        }
     }
 }
 

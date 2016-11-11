@@ -19,6 +19,7 @@
 		18D19CFE1D6191E600A3D5ED /* CameraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D19CFD1D6191E600A3D5ED /* CameraUITests.swift */; };
 		18D19D0C1D619D0500A3D5ED /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D19D0B1D619D0500A3D5ED /* RegisterPageViewController.swift */; };
 		18D19D141D791FDB00A3D5ED /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D19D131D791FDB00A3D5ED /* CustomCell.swift */; };
+		18EED7591DA8E7350079C851 /* userDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EED7581DA8E7350079C851 /* userDetails.swift */; };
 		35AC01C2A48A9C1FD6369B2A /* Pods_CameraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8523261AE2BA809620318B28 /* Pods_CameraTests.framework */; };
 		745DC06A3448C4BA7D7BDB89 /* Pods_Camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17785D5AE63D6455903A3D1A /* Pods_Camera.framework */; };
 		D9C35617CC0F4BE88ADE1692 /* Pods_CameraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDEAB4EE06B97BCA364402A /* Pods_CameraUITests.framework */; };
@@ -62,6 +63,7 @@
 		18D19CFF1D6191E600A3D5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D19D0B1D619D0500A3D5ED /* RegisterPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		18D19D131D791FDB00A3D5ED /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		18EED7581DA8E7350079C851 /* userDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userDetails.swift; sourceTree = "<group>"; };
 		1C49104B1949AF03CA3399AE /* Pods-Camera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera.release.xcconfig"; path = "Pods/Target Support Files/Pods-Camera/Pods-Camera.release.xcconfig"; sourceTree = "<group>"; };
 		4D0457CCADD401137038A657 /* Pods-Camera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Camera/Pods-Camera.debug.xcconfig"; sourceTree = "<group>"; };
 		7DDEAB4EE06B97BCA364402A /* Pods_CameraUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CameraUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,11 +128,12 @@
 			isa = PBXGroup;
 			children = (
 				18C1B65D1D8935390036565F /* addUserViewController.swift */,
-				189E25A11D800739007931E6 /* LoginViewController.swift */,
+				18EED7581DA8E7350079C851 /* userDetails.swift */,
 				189E25A21D800739007931E6 /* ViewController.swift */,
-				189E259F1D800709007931E6 /* AppDelegate.swift */,
 				183E8E361D7969E7001FFB77 /* User.swift */,
 				18D19D131D791FDB00A3D5ED /* CustomCell.swift */,
+				189E25A11D800739007931E6 /* LoginViewController.swift */,
+				189E259F1D800709007931E6 /* AppDelegate.swift */,
 				18D19D0B1D619D0500A3D5ED /* RegisterPageViewController.swift */,
 				18D19CE11D6191E600A3D5ED /* Main.storyboard */,
 				18D19CE41D6191E600A3D5ED /* Assets.xcassets */,
@@ -444,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				189E25A41D800739007931E6 /* ViewController.swift in Sources */,
+				18EED7591DA8E7350079C851 /* userDetails.swift in Sources */,
 				189E25A01D800709007931E6 /* AppDelegate.swift in Sources */,
 				183E8E371D7969E7001FFB77 /* User.swift in Sources */,
 				18D19D141D791FDB00A3D5ED /* CustomCell.swift in Sources */,
