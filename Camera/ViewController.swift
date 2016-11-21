@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 extension ViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
 }
@@ -39,9 +39,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 */
     
-    func filterContentForSearchText(searchText:String, scope:String = "All"){
+    func filterContentForSearchText(_ searchText:String, scope:String = "All"){
         filteredUsers = users.filter { username in
-            return username.name.lowercaseString.containsString(searchText.lowercaseString)
+            return username.name.lowercased().contains(searchText.lowercased())
             //return username.telephone.lowercaseString.containsString(searchText.lowercaseString)
     }
         self.resultsController.tableView.reloadData()
@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     func startObservingDB (){
-        dbRef.observeEventType(.Value, withBlock: {(snapshot:FIRDataSnapshot) in
+        dbRef.observe(.value, with: {(snapshot:FIRDataSnapshot) in
             var newusers = [User]()
             
             for users in snapshot.children{
@@ -77,8 +77,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.users = newusers
             self.tableView.reloadData()
             
-        })  {(error:NSError) in
-            print(error.description)
+        })  {(error:Error) in
+            print(error.localizedDescription)
         }
     }
     
@@ -92,55 +92,39 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
-        let isUserLoggedIn = NSUserDefaults.standardUserDefaults().boolForKey("isUserLoggedin")
+        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedin")
         
         if(!isUserLoggedIn)
         {
-         self.performSegueWithIdentifier("SigninToProtectedPage", sender: self)
+         self.performSegue(withIdentifier: "SigninToProtectedPage", sender: self)
         }
     }
 
     
     
     
-    @IBAction func logoutButtonTapped(sender: AnyObject) {
-        
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedin")
-        NSUserDefaults.standardUserDefaults().synchronize()
-         self.performSegueWithIdentifier("ProtectedViewToSignin", sender: self)
-        
-        
-        /*
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isUserLoggedIn")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        
-        let loginViewController = self.storyboard!.instantiateViewControllerWithIdentifier("loginView") as LoginViewController
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        
-        AppDelegate.window?.rootViewController = loginViewController
-        
-        AppDelegate.window?.makeKeyAndVisible()
-        */
-        
+    @IBAction func logoutButtonTapped(_ sender: AnyObject) {
+        UserDefaults.standard.set(false, forKey: "isUserLoggedin")
+        UserDefaults.standard.synchronize()
+         self.performSegue(withIdentifier: "ProtectedViewToSignin", sender: self)
     }
 
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active && searchController.searchBar.text != ""{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != ""{
             return filteredUsers.count
         }
 
         return users.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
         let username: User
-        if searchController.active && searchController.searchBar.text != ""{
+        if searchController.isActive && searchController.searchBar.text != ""{
             username = filteredUsers[indexPath.row]
         } else{
             username = users[indexPath.row]
@@ -159,8 +143,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete{
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
             let user = users[indexPath.row]
             
             user.itemRef?.removeValue()

@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func loginButtonTapped(sender: AnyObject) {
+    @IBAction func loginButtonTapped(_ sender: AnyObject) {
         
 /*
         let userEmail = userEmailTextField.text
@@ -54,14 +54,14 @@ class LoginViewController: UIViewController {
         }
         else
         {
-            FIRAuth.auth()?.signInWithEmail(self.userEmailTextField.text!, password: self.userPasswordTextField.text!, completion:
+            FIRAuth.auth()?.signIn(withEmail: self.userEmailTextField.text!, password: self.userPasswordTextField.text!, completion:
                 {(user,error) in
                     if error == nil
                     {
-                        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isUserLoggedin")
-                        NSUserDefaults.standardUserDefaults().synchronize()
+                        UserDefaults.standard.set(true, forKey: "isUserLoggedin")
+                        UserDefaults.standard.synchronize()
                         
-                        self.performSegueWithIdentifier("SigninToProtectedPage", sender: self)
+                        self.performSegue(withIdentifier: "SigninToProtectedPage", sender: self)
                         /*
                         let myViewController:ViewController = self.storyboard!.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
                         
@@ -74,28 +74,28 @@ class LoginViewController: UIViewController {
                         
                     else
                     {
-                        let myAlert = UIAlertController(title: "WARNING", message: error?.localizedDescription, preferredStyle:.Alert)
+                        let myAlert = UIAlertController(title: "WARNING", message: error?.localizedDescription, preferredStyle:.alert)
                         
-                        let okAction = UIAlertAction(title:"ok", style: .Cancel, handler: nil)
+                        let okAction = UIAlertAction(title:"ok", style: .cancel, handler: nil)
                         
                         myAlert.addAction(okAction)
                         
-                        self.presentViewController(myAlert, animated:true, completion:nil)
+                        self.present(myAlert, animated:true, completion:nil)
                     }
             })
             
         }
     }
 
-    func displayMyAlertMessage (userMessage:String)
+    func displayMyAlertMessage (_ userMessage:String)
     {
-        let myAlert = UIAlertController(title: "WARNING", message: userMessage, preferredStyle:.Alert)
+        let myAlert = UIAlertController(title: "WARNING", message: userMessage, preferredStyle:.alert)
         
-        let okAction = UIAlertAction(title:"ok", style: .Default, handler: nil)
+        let okAction = UIAlertAction(title:"ok", style: .default, handler: nil)
         
         myAlert.addAction(okAction)
         
-        presentViewController(myAlert, animated:true, completion:nil)
+        present(myAlert, animated:true, completion:nil)
     }
 
 }

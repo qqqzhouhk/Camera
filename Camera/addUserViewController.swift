@@ -21,21 +21,19 @@ class addUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dbRef = FIRDatabase.database().reference().child("users")
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-      
     }
     
-
-    @IBAction func addPatients(sender: AnyObject) {
+    
+    @IBAction func addPatients(_ sender: AnyObject) {
         let telephone = self.telephoneTextField.text
         let name = self.nameTextField.text
         let user = User(telephone: telephone!, name: name!)
         
-        let userRef = self.dbRef.child(self.nameTextField.text!.lowercaseString)
+        let userRef = self.dbRef.child(self.nameTextField.text!.lowercased())
         
         userRef.setValue(user.toAnyObject())
         

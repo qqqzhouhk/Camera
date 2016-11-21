@@ -30,22 +30,32 @@ struct User {
         itemRef = snapshot.ref
         
         
-        if let userTelephone = snapshot.value!["telephone"] as? String{
+       /* 
+         if let dict = snapshot.value as? NSDictionary, let userTelephone = dict["telephone"] as? String {
             telephone = userTelephone
-        }
-        else{
+          }
+          else{
             telephone = ""
-        }
+          }
+       */
         
+        telephone = (snapshot.value as? NSDictionary)? ["telephone"] as? String ?? ""
+        
+        
+        /*
         if let user = snapshot.value!["name"] as? String{
             name = user
         }
         else{
             name = ""
         }
+        */
+        
+        name = (snapshot.value as? NSDictionary)? ["name"] as? String ?? ""
+        
     }
     
-    func toAnyObject() -> AnyObject {
+    func toAnyObject() -> Any {
         return ["telephone":telephone, "name":name]
     }
 }

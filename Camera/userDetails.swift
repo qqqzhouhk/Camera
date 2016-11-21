@@ -7,29 +7,55 @@
 //
 
 import UIKit
+import MjpegStreamingKit
 
 class userDetails: UIViewController {
+    
+    
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var imageView: UIImageView!
 
+    @IBOutlet weak var playButton: UIButton!
+    
+    var url: URL?
+    
+    var playing = false
+    
+    var streamingController: MjpegStreamingController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        streamingController = MjpegStreamingController(imageView: imageView)
+        streamingController.didStartLoading = { [unowned self] in
+            self.loadingIndicator.startAnimating()
+        }
+        streamingController.didFinishLoading = { [unowned self] in
+            self.loadingIndicator.stopAnimating()
+        }
+        
+        url = URL(string: "http://192.168.10.123:7060")
+        streamingController.contentURL = url
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
-    */
+    
+    
 
+    @IBAction func playAndStop(_ sender: Any) {
+        if playing {
+            playButton.setTitle("PLAY", for: .normal)
+            streamingController.stop()
+            playing = false
+        } else {
+            
+            streamingController.play()
+            playing = true
+            playButton.setTitle("STOP", for: .normal)
+        }
+    }
+    
+    
 }

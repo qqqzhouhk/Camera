@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		183E8E371D7969E7001FFB77 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E8E361D7969E7001FFB77 /* User.swift */; };
+		18706D0F1DDC09EF008BF529 /* MjpegStreamingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18706D0E1DDC09EF008BF529 /* MjpegStreamingController.swift */; };
 		189E259B1D7E6EBB007931E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 189E259D1D7E6EBB007931E6 /* GoogleService-Info.plist */; };
 		189E25A01D800709007931E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E259F1D800709007931E6 /* AppDelegate.swift */; };
 		189E25A31D800739007931E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E25A11D800739007931E6 /* LoginViewController.swift */; };
@@ -21,7 +22,6 @@
 		18D19D141D791FDB00A3D5ED /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D19D131D791FDB00A3D5ED /* CustomCell.swift */; };
 		18EED7591DA8E7350079C851 /* userDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EED7581DA8E7350079C851 /* userDetails.swift */; };
 		35AC01C2A48A9C1FD6369B2A /* Pods_CameraTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8523261AE2BA809620318B28 /* Pods_CameraTests.framework */; };
-		745DC06A3448C4BA7D7BDB89 /* Pods_Camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17785D5AE63D6455903A3D1A /* Pods_Camera.framework */; };
 		D9C35617CC0F4BE88ADE1692 /* Pods_CameraUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDEAB4EE06B97BCA364402A /* Pods_CameraUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17785D5AE63D6455903A3D1A /* Pods_Camera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		183E43881DD6F34700937831 /* Camera.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Camera.entitlements; sourceTree = "<group>"; };
 		183E8E361D7969E7001FFB77 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18706D0D1DDC09EF008BF529 /* MjpegStreamingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MjpegStreamingKit.h; path = "../../../Downloads/MjpegStreamingKit-master/MjpegStreamingKit/MjpegStreamingKit.h"; sourceTree = "<group>"; };
+		18706D0E1DDC09EF008BF529 /* MjpegStreamingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MjpegStreamingController.swift; path = "../../../Downloads/MjpegStreamingKit-master/MjpegStreamingKit/MjpegStreamingController.swift"; sourceTree = "<group>"; };
 		189E259C1D7E6EBB007931E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = "en.lproj/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		189E259E1D7E6EC2007931E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = "Base.lproj/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		189E259F1D800709007931E6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				745DC06A3448C4BA7D7BDB89 /* Pods_Camera.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +128,9 @@
 		18D19CDC1D6191E600A3D5ED /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				18706D0D1DDC09EF008BF529 /* MjpegStreamingKit.h */,
+				18706D0E1DDC09EF008BF529 /* MjpegStreamingController.swift */,
+				183E43881DD6F34700937831 /* Camera.entitlements */,
 				18C1B65D1D8935390036565F /* addUserViewController.swift */,
 				18EED7581DA8E7350079C851 /* userDetails.swift */,
 				189E25A21D800739007931E6 /* ViewController.swift */,
@@ -164,7 +168,6 @@
 		19E96971489DC165DBD8E495 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				17785D5AE63D6455903A3D1A /* Pods_Camera.framework */,
 				8523261AE2BA809620318B28 /* Pods_CameraTests.framework */,
 				7DDEAB4EE06B97BCA364402A /* Pods_CameraUITests.framework */,
 			);
@@ -254,19 +257,31 @@
 		18D19CD21D6191E600A3D5ED /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Eriiic;
 				TargetAttributes = {
 					18D19CD91D6191E600A3D5ED = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = FJ9GB3ZXR5;
+						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					18D19CED1D6191E600A3D5ED = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 18D19CD91D6191E600A3D5ED;
 					};
 					18D19CF81D6191E600A3D5ED = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 18D19CD91D6191E600A3D5ED;
 					};
 				};
@@ -453,6 +468,7 @@
 				18D19D141D791FDB00A3D5ED /* CustomCell.swift in Sources */,
 				18C1B65E1D8935390036565F /* addUserViewController.swift in Sources */,
 				189E25A31D800739007931E6 /* LoginViewController.swift in Sources */,
+				18706D0F1DDC09EF008BF529 /* MjpegStreamingController.swift in Sources */,
 				18D19D0C1D619D0500A3D5ED /* RegisterPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,8 +539,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -568,8 +586,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -588,6 +608,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -597,10 +618,17 @@
 			baseConfigurationReference = 4D0457CCADD401137038A657 /* Pods-Camera.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Camera/Camera.entitlements;
+				DEVELOPMENT_TEAM = FJ9GB3ZXR5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Camera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Eriiic.Camera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -610,10 +638,17 @@
 			baseConfigurationReference = 1C49104B1949AF03CA3399AE /* Pods-Camera.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Camera/Camera.entitlements;
+				DEVELOPMENT_TEAM = FJ9GB3ZXR5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Camera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Eriiic.Camera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
@@ -627,6 +662,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Eriiic.CameraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Camera.app/Camera";
 			};
 			name = Debug;
@@ -640,6 +676,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Eriiic.CameraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Camera.app/Camera";
 			};
 			name = Release;
@@ -652,6 +689,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Eriiic.CameraUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Camera;
 			};
 			name = Debug;
@@ -664,6 +702,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Eriiic.CameraUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Camera;
 			};
 			name = Release;
