@@ -57,5 +57,11 @@ class userDetails: UIViewController {
         }
     }
     
+    @IBAction func shoot(_ sender: Any) {
+        streamingController.shoot()
+    }
+    
+    
+    
     
 }

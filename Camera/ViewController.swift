@@ -83,8 +83,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -111,7 +109,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          self.performSegue(withIdentifier: "ProtectedViewToSignin", sender: self)
     }
 
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive && searchController.searchBar.text != ""{
             return filteredUsers.count
@@ -129,16 +126,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else{
             username = users[indexPath.row]
         }
-        
-        
-        
-        
         //self.NameTextField.text = user.name
         //self.TelephoneTextField.text = user.telephone
         
         cell.NameTextField.text=username.name
         cell.TelephoneTextField.text=username.telephone
-        
         
         return cell
     }

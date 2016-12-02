@@ -132,7 +132,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-723" y="-1004"/>
+            <point key="canvasLocation" x="-698" y="-1104"/>
         </scene>
         <!--Add User View Controller-->
         <scene sceneID="WfY-te-NOB">
@@ -270,6 +270,9 @@
                                 <rect key="frame" x="228" y="850" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="SHOOT"/>
+                                <connections>
+                                    <action selector="shoot:" destination="UMg-8S-ThY" eventType="touchUpInside" id="Z0g-6b-Dim"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -451,7 +454,7 @@
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eJG-5M-zJb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eJG-5M-zJb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.074509803920000006" green="0.3921568627" blue="0.70588235290000001" alpha="0.95536099139999997" colorSpace="custom" customColorSpace="sRGB"/>
@@ -479,7 +482,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zcf-S6-vV3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oq0-wb-7cw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oq0-wb-7cw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.074509803920000006" green="0.3921568627" blue="0.70588235290000001" alpha="0.95536099139999997" colorSpace="custom" customColorSpace="sRGB"/>
@@ -500,7 +503,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M28-p6-CAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="60"/>
+            <point key="canvasLocation" x="635" y="71"/>
         </scene>
     </scenes>
     <resources>
